@@ -1,0 +1,19 @@
+Test Plan for Project 6
+
+addRightFront (LAYAN)
+
+removeRightFront (OAK)
+
+advance (LAYAN)
+
+moveToStart (OAK)
+
+leftLength (LAYAN)
+
+rightLength (OAK)
+
+moveToFinish (LAYAN)
+
+
+
+retreat (OAK)

@@ -176,7 +176,13 @@ public class List3<T> extends ListSecondary<T> {
      */
     private void createNewRep() {
 
-        // TODO - fill in body
+        this.preStart = new Node();
+        this.lastLeft = this.preStart;
+        this.postFinish = new Node();
+        this.preStart.next = this.postFinish;
+        this.postFinish.previous = this.preStart;
+        this.leftLength = 0;
+        this.rightLength = 0;
 
     }
 
@@ -185,7 +191,7 @@ public class List3<T> extends ListSecondary<T> {
      */
     public List3() {
 
-        // TODO - fill in body
+        this.createNewRep();
 
         assert this.conventionHolds();
     }
@@ -231,7 +237,14 @@ public class List3<T> extends ListSecondary<T> {
     public final void addRightFront(T x) {
         assert x != null : "Violation of: x is not null";
 
-        // TODO - fill in body
+        Node newNode = new Node();
+        newNode.data = x;
+        newNode.next = this.preStart.next;
+        newNode.previous = this.preStart;
+        this.preStart.next.previous = newNode;
+        this.preStart.next = newNode;
+
+        this.leftLength++;
 
         assert this.conventionHolds();
     }
@@ -251,7 +264,11 @@ public class List3<T> extends ListSecondary<T> {
     public final void advance() {
         assert this.rightLength() > 0 : "Violation of: this.right /= <>";
 
-        // TODO - fill in body
+        this.lastLeft.next = this.lastLeft.next.next;
+        this.lastLeft.next.previous = this.lastLeft;
+
+        this.leftLength++;
+        this.rightLength--;
 
         assert this.conventionHolds();
     }
@@ -267,11 +284,9 @@ public class List3<T> extends ListSecondary<T> {
     @Override
     public final int leftLength() {
 
-        // TODO - fill in body
-
         assert this.conventionHolds();
-        // Fix this line to return the result after checking the convention.
-        return 0;
+
+        return this.leftLength;
     }
 
     @Override
@@ -345,7 +360,9 @@ public class List3<T> extends ListSecondary<T> {
     @Override
     public final void moveToFinish() {
 
-        // TODO - fill in body
+        while (this.lastLeft != this.postFinish) {
+            this.advance();
+        }
 
         assert this.conventionHolds();
     }
