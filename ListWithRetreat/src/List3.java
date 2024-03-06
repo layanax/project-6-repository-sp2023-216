@@ -398,7 +398,7 @@ public class List3<T> extends ListSecondary<T> {
 
         if (this.rightLength() == 0) {
             // Move cursor to the start of the left side
-            this.moveToStart();
+            this.moveToFinish();
         } else {
             // Move cursor to the left by one position
             Node x = this.lastLeft;
