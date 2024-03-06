@@ -237,14 +237,22 @@ public class List3<T> extends ListSecondary<T> {
     public final void addRightFront(T x) {
         assert x != null : "Violation of: x is not null";
 
+//        Node newNode = new Node();
+//        newNode.data = x;
+//        newNode.next = this.preStart.next;
+//        newNode.previous = this.preStart;
+//        this.preStart.next.previous = newNode;
+//        this.preStart.next = newNode;
+//
+//        this.leftLength++;
         Node newNode = new Node();
         newNode.data = x;
-        newNode.next = this.preStart.next;
-        newNode.previous = this.preStart;
-        this.preStart.next.previous = newNode;
-        this.preStart.next = newNode;
-
-        this.leftLength++;
+        Node temp = this.lastLeft;
+        newNode.next = temp.next;
+        newNode.previous = temp;
+        temp.next.previous = newNode;
+        temp.next = newNode;
+        this.rightLength++;
 
         assert this.conventionHolds();
     }
@@ -271,11 +279,17 @@ public class List3<T> extends ListSecondary<T> {
     public final void advance() {
         assert this.rightLength() > 0 : "Violation of: this.right /= <>";
 
-        this.lastLeft.next = this.lastLeft.next.next;
-        this.lastLeft.next.previous = this.lastLeft;
+//        this.lastLeft.next = this.lastLeft.next.next;
+//        this.lastLeft.next.previous = this.lastLeft;
+//
+//        this.leftLength++;
+//        this.rightLength--;
+        Node x = this.lastLeft;
+        this.lastLeft = x.next;
+        this.leftLength += 1;
+        this.rightLength -= 1;
 
-        this.leftLength++;
-        this.rightLength--;
+        assert this.conventionHolds();
 
         assert this.conventionHolds();
     }
