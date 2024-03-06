@@ -290,8 +290,6 @@ public class List3<T> extends ListSecondary<T> {
         this.rightLength -= 1;
 
         assert this.conventionHolds();
-
-        assert this.conventionHolds();
     }
 
     @Override
