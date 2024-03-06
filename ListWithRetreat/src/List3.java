@@ -378,9 +378,9 @@ public class List3<T> extends ListSecondary<T> {
     @Override
     public final void moveToFinish() {
 
-        while (this.lastLeft != this.postFinish) {
-            this.advance();
-        }
+        this.lastLeft = this.postFinish.previous;
+        this.leftLength += this.rightLength;
+        this.rightLength = 0;
 
         assert this.conventionHolds();
     }
@@ -389,11 +389,23 @@ public class List3<T> extends ListSecondary<T> {
     public final void retreat() {
         assert this.leftLength() > 0 : "Violation of: this.left /= <>";
 
-        Node x = this.lastLeft;
-        this.lastLeft = x.previous;
-        this.leftLength--;
-        this.rightLength++;
+//        Node x = this.lastLeft;
+//        this.lastLeft = x.previous;
+//        this.leftLength--;
+//        this.rightLength++;
+//
+//        assert this.conventionHolds();
 
+        if (this.rightLength() == 0) {
+            // Move cursor to the start of the left side
+            this.moveToStart();
+        } else {
+            // Move cursor to the left by one position
+            Node x = this.lastLeft;
+            this.lastLeft = x.previous;
+            this.leftLength--;
+            this.rightLength++;
+        }
         assert this.conventionHolds();
     }
 
