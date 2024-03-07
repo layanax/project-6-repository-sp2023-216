@@ -13,6 +13,31 @@ import components.list.List;
 public abstract class ListTest {
 
     /**
+     * Constant of value 3 to avoid magic number warnings.
+     */
+    private static final int THREE = 3;
+    /**
+     * Constant of value 4 to avoid magic number warnings.
+     */
+    private static final int FOUR = 4;
+    /**
+     * Constant of value 5 to avoid magic number warnings.
+     */
+    private static final int FIVE = 5;
+    /**
+     * Constant of value 6 to avoid magic number warnings.
+     */
+    private static final int SIX = 6;
+    /**
+     * Constant of value 7 to avoid magic number warnings.
+     */
+    private static final int SEVEN = 7;
+    /**
+     * Constant of value 8 to avoid magic number warnings.
+     */
+    private static final int EIGHT = 8;
+
+    /**
      * Invokes the appropriate {@code List} constructor for the implementation
      * under test and returns the result.
      *
@@ -110,7 +135,10 @@ public abstract class ListTest {
      * Test cases for constructor, addRightFront, removeRightFront, advance,
      * moveToStart, leftLength, and rightLength.
      */
-
+    /**
+     * Tests if the constructor initializes a new list correctly by comparing it
+     * to a reference list.
+     */
     @Test
     public final void testConstructor() {
         /*
@@ -124,6 +152,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests adding an element to the front of an empty list with no elements on
+     * the right side.
+     */
     @Test
     public final void testAddRightFrontLeftEmptyRightEmpty() {
         /*
@@ -141,6 +173,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests adding an element to the front of a non-empty list with no elements
+     * on the left side.
+     */
     @Test
     public final void testAddRightFrontLeftEmptyRightNonEmpty() {
         /*
@@ -158,14 +194,18 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests adding an element to the front of an empty list with elements on
+     * the right side.
+     */
     @Test
     public final void testAddRightFrontLeftNonEmptyRightEmpty() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "yellow", "orange",
+        List<String> list1 = this.createFromArgsTest(THREE, "yellow", "orange",
                 "purple");
-        List<String> list2 = this.createFromArgsRef(3, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(THREE, "yellow", "orange",
                 "purple", "red");
         /*
          * Call method under test
@@ -177,6 +217,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests adding an element to the front of a non-empty list with elements on
+     * both sides.
+     */
     @Test
     public final void testAddRightFrontLeftNonEmptyRightNonEmpty() {
         /*
@@ -196,6 +240,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests removing an element from the front of an empty list with one
+     * element on the right side.
+     */
     @Test
     public final void testRemoveRightFrontLeftEmptyRightOne() {
         /*
@@ -214,6 +262,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests removing an element from the front of an empty list with multiple
+     * elements on the right side.
+     */
     @Test
     public final void testRemoveRightFrontLeftEmptyRightNonEmpty() {
         /*
@@ -232,14 +284,18 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests removing an element from the front of a non-empty list with one
+     * element on the right side.
+     */
     @Test
     public final void testRemoveRightFrontLeftNonEmptyRightOne() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "yellow", "orange",
+        List<String> list1 = this.createFromArgsTest(THREE, "yellow", "orange",
                 "purple", "red");
-        List<String> list2 = this.createFromArgsRef(3, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(THREE, "yellow", "orange",
                 "purple");
         /*
          * Call method under test
@@ -252,6 +308,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests removing an element from the front of a non-empty list with
+     * multiple elements on the right side.
+     */
     @Test
     public final void testRemoveRightFrontLeftNonEmptyRightNonEmpty() {
         /*
@@ -272,6 +332,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests advancing the cursor when the list is empty with one element on the
+     * right side.
+     */
     @Test
     public final void testAdvanceLeftEmptyRightOne() {
         /*
@@ -289,6 +353,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests advancing the cursor when the list is empty with multiple elements
+     * on the right side.
+     */
     @Test
     public final void testAdvanceLeftEmptyRightNonEmpty() {
         /*
@@ -306,14 +374,18 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests advancing the cursor when the list is non-empty with one element on
+     * the right side.
+     */
     @Test
     public final void testAdvanceLeftNonEmptyRightOne() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "yellow", "orange",
+        List<String> list1 = this.createFromArgsTest(THREE, "yellow", "orange",
                 "purple", "red");
-        List<String> list2 = this.createFromArgsRef(4, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(FOUR, "yellow", "orange",
                 "purple", "red");
         /*
          * Call method under test
@@ -325,6 +397,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests advancing the cursor when the list is non-empty with multiple
+     * elements on the right side.
+     */
     @Test
     public final void testAdvanceLeftNonEmptyRightNonEmpty() {
         /*
@@ -332,7 +408,7 @@ public abstract class ListTest {
          */
         List<String> list1 = this.createFromArgsTest(2, "yellow", "orange",
                 "green", "purple");
-        List<String> list2 = this.createFromArgsRef(3, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(THREE, "yellow", "orange",
                 "green", "purple");
         /*
          * Call method under test
@@ -344,6 +420,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the start of an empty list with no elements on
+     * either side.
+     */
     @Test
     public final void testMoveToStartLeftEmptyRightEmpty() {
         /*
@@ -361,6 +441,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the start of an empty list with elements on
+     * the right side.
+     */
     @Test
     public final void testMoveToStartLeftEmptyRightNonEmpty() {
         /*
@@ -378,12 +462,16 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the start of a non-empty list with no elements
+     * on the left side.
+     */
     @Test
     public final void testMoveToStartLeftNonEmptyRightEmpty() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "yellow", "orange",
+        List<String> list1 = this.createFromArgsTest(THREE, "yellow", "orange",
                 "purple");
         List<String> list2 = this.createFromArgsRef(0, "yellow", "orange",
                 "purple");
@@ -397,6 +485,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the start of a non-empty list with elements on
+     * both sides.
+     */
     @Test
     public final void testMoveToStartLeftNonEmptyRightNonEmpty() {
         /*
@@ -413,6 +505,9 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the right portion of an empty list.
+     */
     @Test
     public final void testRightLengthLeftEmptyRightEmpty() {
         /*
@@ -431,6 +526,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the right portion of a non-empty list with elements
+     * on the right side.
+     */
     @Test
     public final void testRightLengthLeftEmptyRightNonEmpty() {
         /*
@@ -445,18 +544,22 @@ public abstract class ListTest {
         /*
          * Assert that values of variables match expectations
          */
-        assertEquals(3, i);
+        assertEquals(THREE, i);
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the right portion of an empty list with elements on
+     * the left side.
+     */
     @Test
     public final void testRightLengthLeftNonEmptyRightEmpty() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "yellow", "orange",
+        List<String> list1 = this.createFromArgsTest(THREE, "yellow", "orange",
                 "purple");
-        List<String> list2 = this.createFromArgsRef(3, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(THREE, "yellow", "orange",
                 "purple");
         /*
          * Call method under test
@@ -469,6 +572,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the right portion of a non-empty list with elements
+     * on both sides.
+     */
     @Test
     public final void testRightLengthLeftNonEmptyRightNonEmpty() {
         /*
@@ -489,6 +596,9 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the left portion of an empty list.
+     */
     @Test
     public final void testLeftLengthLeftEmptyRightEmpty() {
         /*
@@ -507,6 +617,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the left portion of a non-empty list with elements on
+     * the right side.
+     */
     @Test
     public final void testLeftLengthLeftEmptyRightNonEmpty() {
         /*
@@ -525,14 +639,18 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the left portion of an empty list with elements on
+     * the left side.
+     */
     @Test
     public final void testLeftLengthLeftNonEmptyRightEmpty() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "yellow", "orange",
+        List<String> list1 = this.createFromArgsTest(THREE, "yellow", "orange",
                 "purple");
-        List<String> list2 = this.createFromArgsRef(3, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(THREE, "yellow", "orange",
                 "purple");
         /*
          * Call method under test
@@ -541,10 +659,14 @@ public abstract class ListTest {
         /*
          * Assert that values of variables match expectations
          */
-        assertEquals(3, i);
+        assertEquals(THREE, i);
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests the length of the left portion of a non-empty list with elements on
+     * both sides.
+     */
     @Test
     public final void testLeftLengthLeftNonEmptyRightNonEmpty() {
         /*
@@ -569,6 +691,9 @@ public abstract class ListTest {
      * Test cases for iterator.
      */
 
+    /**
+     * Tests iterating over an empty list.
+     */
     @Test
     public final void testIteratorEmpty() {
         /*
@@ -590,6 +715,9 @@ public abstract class ListTest {
         assertEquals(list3, list2);
     }
 
+    /**
+     * Tests iterating over a list with elements only on the right side.
+     */
     @Test
     public final void testIteratorOnlyRight() {
         /*
@@ -612,14 +740,19 @@ public abstract class ListTest {
         assertEquals(list4, list2);
     }
 
+    /**
+     * Tests iterating over a list with elements only on the left side.
+     */
     @Test
     public final void testIteratorOnlyLeft() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "red", "green", "blue");
+        List<String> list1 = this.createFromArgsTest(THREE, "red", "green",
+                "blue");
         List<String> list2 = this.createFromArgsRef(0);
-        List<String> list3 = this.createFromArgsRef(3, "red", "green", "blue");
+        List<String> list3 = this.createFromArgsRef(THREE, "red", "green",
+                "blue");
         List<String> list4 = this.createFromArgsRef(0, "blue", "green", "red");
         /*
          * Call method under test
@@ -634,6 +767,9 @@ public abstract class ListTest {
         assertEquals(list4, list2);
     }
 
+    /**
+     * Tests iterating over a list with elements on both sides.
+     */
     @Test
     public final void testIteratorLeftAndRight() {
         /*
@@ -663,6 +799,10 @@ public abstract class ListTest {
      * Test cases for other methods: moveToFinish
      */
 
+    /**
+     * Tests moving the cursor to the end of an empty list with no elements on
+     * either side.
+     */
     @Test
     public final void testMoveToFinishLeftEmptyRightEmpty() {
         /*
@@ -680,13 +820,18 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the end of an empty list with elements on the
+     * right side.
+     */
     @Test
     public final void testMoveToFinishLeftEmptyRightNonEmpty() {
         /*
          * Set up variables
          */
         List<String> list1 = this.createFromArgsTest(0, "green", "red", "blue");
-        List<String> list2 = this.createFromArgsRef(3, "green", "red", "blue");
+        List<String> list2 = this.createFromArgsRef(THREE, "green", "red",
+                "blue");
         /*
          * Call method under test
          */
@@ -697,14 +842,18 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the end of a non-empty list with no elements
+     * on the left side.
+     */
     @Test
     public final void testMoveToFinishLeftNonEmptyRightEmpty() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "yellow", "orange",
+        List<String> list1 = this.createFromArgsTest(THREE, "yellow", "orange",
                 "purple");
-        List<String> list2 = this.createFromArgsRef(3, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(THREE, "yellow", "orange",
                 "purple");
         /*
          * Call method under test
@@ -716,6 +865,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the end of a non-empty list with elements on
+     * both sides.
+     */
     @Test
     public final void testMoveToFinishLeftNonEmptyRightNonEmpty() {
         /*
@@ -723,7 +876,7 @@ public abstract class ListTest {
          */
         List<String> list1 = this.createFromArgsTest(2, "yellow", "orange",
                 "green", "purple");
-        List<String> list2 = this.createFromArgsRef(4, "yellow", "orange",
+        List<String> list2 = this.createFromArgsRef(FOUR, "yellow", "orange",
                 "green", "purple");
         /*
          * Call method under test
@@ -735,6 +888,10 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
+    /**
+     * Tests moving the cursor to the end of an empty list with no elements on
+     * either side and then adding an element.
+     */
     @Test
     public final void testMoveToFinishShowBug() {
         /*
@@ -753,9 +910,11 @@ public abstract class ListTest {
         assertEquals(list2, list1);
     }
 
-    //retreat method tests
+    //RETREAT METHOD TESTS
+
     /**
-     *
+     * Tests retreating the cursor when the list is empty with elements on the
+     * right side.
      */
     @Test
     public final void testRetreatLeftEmptyRightNonEmpty() {
@@ -775,14 +934,14 @@ public abstract class ListTest {
     }
 
     /**
-     *
+     * Tests retreating the cursor in a normal case.
      */
     @Test
     public final void testRetreatNormal2() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(3, "a", "b", "c");
+        List<String> list1 = this.createFromArgsTest(THREE, "a", "b", "c");
         List<String> list2 = this.createFromArgsRef(2, "a", "b", "c");
         /*
          * Call method under test
@@ -795,7 +954,8 @@ public abstract class ListTest {
     }
 
     /**
-     *
+     * Tests retreating the cursor when the list has one element on the left
+     * side and no elements on the right side.
      */
     @Test
     public void testRetreatOneOne() {
@@ -815,7 +975,7 @@ public abstract class ListTest {
     }
 
     /**
-     *
+     * Tests retreating the cursor in the lower boundary case.
      */
     @Test
     public void testRetreatLowerBoundaryCase() {
@@ -837,17 +997,17 @@ public abstract class ListTest {
     }
 
     /**
-     *
+     * Tests retreating the cursor in the upper boundary case.
      */
     @Test
     public void testRetreatUpperBoundary() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(8, "a", "b", "c", "d", "e",
-                "f", "g", "h");
-        List<String> list2 = this.createFromArgsRef(7, "a", "b", "c", "d", "e",
-                "f", "g", "h");
+        List<String> list1 = this.createFromArgsTest(EIGHT, "a", "b", "c", "d",
+                "e", "f", "g", "h");
+        List<String> list2 = this.createFromArgsRef(SEVEN, "a", "b", "c", "d",
+                "e", "f", "g", "h");
         /*
          * Call method under test
          */
@@ -859,17 +1019,17 @@ public abstract class ListTest {
     }
 
     /**
-     *
+     * Tests retreating the cursor in a normal case.
      */
     @Test
     public void testRetreatNormalCase() {
         /*
          * Set up variables
          */
-        List<String> list1 = this.createFromArgsTest(6, "a", "b", "c", "d", "e",
-                "f", "g", "h");
-        List<String> list2 = this.createFromArgsRef(5, "a", "b", "c", "d", "e",
-                "f", "g", "h");
+        List<String> list1 = this.createFromArgsTest(SIX, "a", "b", "c", "d",
+                "e", "f", "g", "h");
+        List<String> list2 = this.createFromArgsRef(FIVE, "a", "b", "c", "d",
+                "e", "f", "g", "h");
         /*
          * Call method under test
          */
@@ -881,7 +1041,7 @@ public abstract class ListTest {
     }
 
     /**
-     *
+     * Tests retreating the cursor to an empty left side.
      */
     @Test
     public void testRetreatToEmptyLeft() {

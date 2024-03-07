@@ -237,14 +237,7 @@ public class List3<T> extends ListSecondary<T> {
     public final void addRightFront(T x) {
         assert x != null : "Violation of: x is not null";
 
-//        Node newNode = new Node();
-//        newNode.data = x;
-//        newNode.next = this.preStart.next;
-//        newNode.previous = this.preStart;
-//        this.preStart.next.previous = newNode;
-//        this.preStart.next = newNode;
-//
-//        this.leftLength++;
+        //creates new node and insert it at the front of the right list
         Node newNode = new Node();
         newNode.data = x;
         Node temp = this.lastLeft;
@@ -261,6 +254,7 @@ public class List3<T> extends ListSecondary<T> {
     public final T removeRightFront() {
         assert this.rightLength() > 0 : "Violation of: this.right /= <>";
 
+        //removes front node of the right list and returns its data
         Node lastLeft = this.lastLeft;
         Node newNext = lastLeft.next;
 
@@ -278,11 +272,7 @@ public class List3<T> extends ListSecondary<T> {
     public final void advance() {
         assert this.rightLength() > 0 : "Violation of: this.right /= <>";
 
-//        this.lastLeft.next = this.lastLeft.next.next;
-//        this.lastLeft.next.previous = this.lastLeft;
-//
-//        this.leftLength++;
-//        this.rightLength--;
+        //moves the last left pointer to the next node
         Node x = this.lastLeft;
         this.lastLeft = x.next;
         this.leftLength += 1;
@@ -294,6 +284,7 @@ public class List3<T> extends ListSecondary<T> {
     @Override
     public final void moveToStart() {
 
+        //moves the last left pointer to the prestart node
         this.lastLeft = this.preStart;
         this.rightLength += this.leftLength;
         this.leftLength = 0;
@@ -377,6 +368,7 @@ public class List3<T> extends ListSecondary<T> {
     @Override
     public final void moveToFinish() {
 
+        //moves the last left pointer to the post finish node
         this.lastLeft = this.postFinish.previous;
         this.leftLength += this.rightLength;
         this.rightLength = 0;
@@ -388,6 +380,7 @@ public class List3<T> extends ListSecondary<T> {
     public final void retreat() {
         assert this.leftLength() > 0 : "Violation of: this.left /= <>";
 
+        //moves the last left pointer to the previous node
         Node x = this.lastLeft;
         this.lastLeft = x.previous;
         this.leftLength--;
