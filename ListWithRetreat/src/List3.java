@@ -263,12 +263,11 @@ public class List3<T> extends ListSecondary<T> {
 
         Node lastLeft = this.lastLeft;
         Node newNext = lastLeft.next;
-        Node prev = lastLeft.previous;
+
         lastLeft.next = newNext.next;
         lastLeft = newNext.previous;
         lastLeft.next.previous = lastLeft;
         T temp = newNext.data;
-
         this.rightLength -= 1;
         assert this.conventionHolds();
         return temp;
@@ -389,23 +388,10 @@ public class List3<T> extends ListSecondary<T> {
     public final void retreat() {
         assert this.leftLength() > 0 : "Violation of: this.left /= <>";
 
-//        Node x = this.lastLeft;
-//        this.lastLeft = x.previous;
-//        this.leftLength--;
-//        this.rightLength++;
-//
-//        assert this.conventionHolds();
-
-        if (this.rightLength() == 0) {
-            // Move cursor to the start of the left side
-            this.moveToFinish();
-        } else {
-            // Move cursor to the left by one position
-            Node x = this.lastLeft;
-            this.lastLeft = x.previous;
-            this.leftLength--;
-            this.rightLength++;
-        }
+        Node x = this.lastLeft;
+        this.lastLeft = x.previous;
+        this.leftLength--;
+        this.rightLength++;
         assert this.conventionHolds();
     }
 
